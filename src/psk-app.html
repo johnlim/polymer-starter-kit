@@ -96,7 +96,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <!-- setup routes -->
-    <app-location route="{{route}}"></app-location>
+    <app-location route="{{route}}" use-hash-as-path></app-location>
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}"></app-route>
 
     <app-scrollpos-control selected="{{routeData.page}}"></app-scrollpos-control>
@@ -164,11 +164,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         '_routePageChanged(routeData.page)'
       ],
 
+      ready: function() {
+        window.location.href = '#/about'
+      },
+
       _routePageChanged: function(page) {
+        console.log('routeData', this.routeData)
+//        if(page==='about') //uncomment this and about page is loaded as expected
         this.page = page || 'home';
       },
 
       _pageChanged: function(page) {
+        console.log('page', this.page)
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('psk-page-' + page + '.html')
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
