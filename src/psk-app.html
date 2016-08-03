@@ -29,6 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 
 <link rel="import" href="app-icons.html">
+<link rel="import" href="custom-login.html">
 
 <dom-module id="psk-app">
   <template>
@@ -146,6 +147,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <psk-page-404 name="404"></psk-page-404>
       </iron-pages>
     </app-drawer-layout>
+    <custom-login></custom-login>
   </template>
 
   <script>
@@ -163,10 +165,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       observers: [
         '_routePageChanged(routeData.page)'
       ],
-
-      ready: function() {
-        window.location.href = '#/about'
-      },
 
       _routePageChanged: function(page) {
         console.log('routeData', this.routeData)
