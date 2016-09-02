@@ -10,10 +10,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="custom-element.html">
 
-
-<dom-module id="my-view1">
+<dom-module id="nested-element">
   <template>
     <style include="shared-styles">
       :host {
@@ -25,16 +23,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <custom-element></custom-element>
+      <h1>Nested Element</h1>
     </div>
   </template>
 
   <script>
     Polymer({
-      is: 'my-view1'
+      is: 'nested-element',
+      ready: function() {
+        var resolvedUrl = this.resolveUrl('nested-element.html')
+        console.log('resolvedUrl', resolvedUrl)
+      }
     });
   </script>
 </dom-module>
