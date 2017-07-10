@@ -1,0 +1,27 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="element-child.html">
+
+<dom-module id="element-parent">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+    <element-child name="testKey"></element-child>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'element-parent',
+      ready: function () {
+        this.async(function () {
+          localStorage.setItem('testKey', 'aaaaaaaaaa')
+        }, 1000)
+      }
+    });
+  </script>
+</dom-module>

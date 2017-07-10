@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="element-child">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <iron-localstorage use-raw
+                       name="[[name]]"
+                       value="{{localStorageValue}}"
+                       on-iron-localstorage-load="_monitorLoad">
+    </iron-localstorage>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'element-child',
+      properties: {
+        name: {
+          type: String
+        },
+        localStorageValue: {
+          type: String,
+          observer: 'localStorageValueChanged'
+        },
+      },
+      localStorageValueChanged: function () {
+        console.log('localStorageValue changed', this.localStorageValue)
+      },
+
+      _monitorLoad: function () {
+        console.log('******received iron-localstorage-load event*****')
+      }
+
+    });
+  </script>
+</dom-module>
