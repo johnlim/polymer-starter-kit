@@ -84,6 +84,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="view2" href="[[rootPath]]view2">View Two</a>
           <a name="view3" href="[[rootPath]]view3">View Three</a>
         </iron-selector>
+        <a on-tap="_handleTap" href="[[rootpath]]view1">View 4</a>
       </app-drawer>
 
       <!-- Main content -->
@@ -158,6 +159,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _showPage404() {
         this.page = 'view404';
+      }
+      _handleTap() {
+        console.log('tap detected')
       }
     }
 
